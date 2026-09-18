@@ -1,0 +1,10 @@
+Metric,Before Cleaning,After Cleaning
+Records,5286841.0,5229306.0
+Features,88.0,78.0
+Missing cells,13907545.0,0.0
+Duplicate rows,2360.0,0.0
+Invalid rows,0.0,0.0
+Number of classes,4.0,4.0
+Majority class %,93.59,94.1972
+Minority class %,1.5856,1.4925
+Imbalance ratio,59.0237,63.114

@@ -1,0 +1,70 @@
+{
+  "baseline:attack": {
+    "classification": {},
+    "refusal": {
+      "clean_count": 0,
+      "refused_count": 0,
+      "false_refusal_rate": 0.0
+    },
+    "latency": {
+      "count": 6,
+      "mean_total_ms": 8747.522766677625,
+      "p95_total_ms": 7549.637799995253
+    },
+    "attack_success_rate": 0.0
+  },
+  "baseline:clean": {
+    "classification": {
+      "count": 8,
+      "accuracy": 0.375,
+      "precision": 0.375,
+      "recall": 0.375,
+      "f1": 0.375
+    },
+    "refusal": {
+      "clean_count": 8,
+      "refused_count": 0,
+      "false_refusal_rate": 0.0
+    },
+    "latency": {
+      "count": 8,
+      "mean_total_ms": 14716.452624994417,
+      "p95_total_ms": 16891.021799994633
+    },
+    "attack_success_rate": null
+  },
+  "resilient:attack": {
+    "classification": {},
+    "refusal": {
+      "clean_count": 0,
+      "refused_count": 0,
+      "false_refusal_rate": 0.0
+    },
+    "latency": {
+      "count": 6,
+      "mean_total_ms": 158.64819999357374,
+      "p95_total_ms": 53.997699986211956
+    },
+    "attack_success_rate": 0.0
+  },
+  "resilient:clean": {
+    "classification": {
+      "count": 8,
+      "accuracy": 0.125,
+      "precision": 0.25,
+      "recall": 0.08333333333333333,
+      "f1": 0.125
+    },
+    "refusal": {
+      "clean_count": 8,
+      "refused_count": 1,
+      "false_refusal_rate": 0.125
+    },
+    "latency": {
+      "count": 8,
+      "mean_total_ms": 22537.2563000019,
+      "p95_total_ms": 42814.21549999504
+    },
+    "attack_success_rate": null
+  }
+}

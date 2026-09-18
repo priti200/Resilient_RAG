@@ -1,0 +1,7 @@
+Issue Type,Column,Count,Detail
+Missingness concentrated in feature,DstJitAct,4918285,4918285 missing values (93.03%)
+Missingness concentrated in feature,DstJitter,4310352,4310352 missing values (81.53%)
+Missingness concentrated in feature,SrcJitAct,4310352,4310352 missing values (81.53%)
+Cat. feature with missing values,State_RSP,368556,368556 missing values (6.97%)
+Binary label valid,BinaryLabel,0,No negative binary labels observed.
+No infinite numeric values,numeric features,0,No infinite values in numeric features detected.

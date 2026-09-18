@@ -1,0 +1,6 @@
+threshold: -5.062863230705261
+quantile: 0.05
+validation_queries: 100
+min_score: -5.30126953125
+median_score: -4.272654056549072
+max_score: -3.000875234603882

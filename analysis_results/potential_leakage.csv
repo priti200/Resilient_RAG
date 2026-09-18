@@ -1,0 +1,7 @@
+Column,Possible Leakage?,Reason,Recommendation
+BinaryLabel,Yes,Binary target field,Use as target only; do not feed as feature.
+CategoryLabel,Yes,Multiclass target field,Use as target only; do not feed as feature.
+SubCategoryLabel,Yes,Detailed subcategory target field,Use as target or metadata only; not a feature.
+Ssaddr,Possible,Source address / identifier may encode network identity,Exclude from model features unless intentionally studying host identity.
+Sdaddr,Possible,Destination address / identifier may encode network identity,Exclude from model features unless intentionally studying host identity.
+Dur,Possible,Session duration acts as a temporal sampling signal,Review carefully; keep only if required by the study design.

@@ -1,0 +1,10 @@
+{
+  "input": "data\\processed\\chunks\\agentic\\train_sample_1000_delayed.jsonl",
+  "index": "data\\processed\\index\\agentic.faiss",
+  "metadata": "data\\processed\\index\\agentic_metadata.jsonl",
+  "method": "agentic",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunks": 925,
+  "dimension": 384,
+  "device": "cuda"
+}

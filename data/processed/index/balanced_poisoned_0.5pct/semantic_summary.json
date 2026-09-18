@@ -1,0 +1,10 @@
+{
+  "input": "data\\processed\\kb\\poisoned_balanced_0.5pct.jsonl",
+  "index": "data\\processed\\index\\balanced_poisoned_0.5pct\\semantic.faiss",
+  "metadata": "data\\processed\\index\\balanced_poisoned_0.5pct\\semantic_metadata.jsonl",
+  "method": "semantic",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunks": 100500,
+  "dimension": 384,
+  "device": "cuda"
+}

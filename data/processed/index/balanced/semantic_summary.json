@@ -1,0 +1,10 @@
+{
+  "input": "data\\processed\\kb\\clean_sample_100k_balanced.jsonl",
+  "index": "data\\processed\\index\\balanced\\semantic.faiss",
+  "metadata": "data\\processed\\index\\balanced\\semantic_metadata.jsonl",
+  "method": "semantic",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunks": 100000,
+  "dimension": 384,
+  "device": "cuda"
+}

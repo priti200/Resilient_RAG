@@ -1,0 +1,54 @@
+GE-NIS TRAIN BALANCING REPORT
+===========================
+
+Source training dataset: C:\Users\sdine\OneDrive\Documents\4-preprocessed\data\cleaned\train.csv
+Original training row count: 3660514
+Original class counts:
+- benign: 98368
+- bruteforce: 54633
+- dos: 3448103
+- recon: 59410
+Original class percentages:
+- benign: 2.6873%
+- bruteforce: 1.4925%
+- dos: 94.1972%
+- recon: 1.6230%
+
+Balancing method: random undersampling applied to every class to the largest safe no-duplication target count
+Random seed: 42
+Target count per class: 54633
+Constraint: no duplication and no synthetic records were allowed; therefore the balancing target is the smallest observed class count, which is the largest safe count that preserves equal-class balancing without oversampling.
+
+Final balanced class counts:
+- benign: 54633
+- bruteforce: 54633
+- dos: 54633
+- recon: 54633
+Final class percentages:
+- benign: 25.0000%
+- bruteforce: 25.0000%
+- dos: 25.0000%
+- recon: 25.0000%
+Final balanced training row count: 218532
+
+Validation row count: 784396
+Validation class distribution:
+- benign: 21079
+- bruteforce: 11707
+- dos: 738880
+- recon: 12730
+
+Test row count: 784396
+Test class distribution:
+- benign: 21079
+- bruteforce: 11707
+- dos: 738879
+- recon: 12731
+
+BALANCING STATUS: READY
+
+Before vs after class counts:
+- benign: 98368 -> 54633
+- bruteforce: 54633 -> 54633
+- dos: 3448103 -> 54633
+- recon: 59410 -> 54633

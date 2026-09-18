@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1200" viewBox="0 0 1400 1200">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <text x="700" y="45" text-anchor="middle" font-family="Arial" font-size="28" font-weight="bold" fill="#1a1a2e">Resilient-RAG Architecture Diagram</text>
+  <text x="700" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#555">Layered Defense System Against Knowledge Poisoning and Prompt Injection in Network Intrusion Detection</text>
+
+  <!-- Phase I: Data Foundation (Weeks 1-2) -->
+  <rect x="30" y="90" width="1340" height="280" rx="12" fill="#e8f4fd" stroke="#4a90d9" stroke-width="2"/>
+  <text x="40" y="115" font-family="Arial" font-size="16" font-weight="bold" fill="#2c5f8a">Phase I: Data Foundation (Weeks 1–2)</text>
+
+  <!-- Raw Data -->
+  <rect x="50" y="130" width="200" height="220" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="150" y="155" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c5f8a">Raw GeNIS Data</text>
+  <text x="60" y="175" font-family="Courier" font-size="11" fill="#333">data/original/</text>
+  <text x="60" y="195" font-family="Courier" font-size="10" fill="#555">genis-5-sec-train.csv</text>
+  <text x="60" y="210" font-family="Courier" font-size="10" fill="#555">genis-10-sec-train.csv</text>
+  <text x="60" y="225" font-family="Courier" font-size="10" fill="#555">genis-30-sec-train.csv</text>
+  <text x="60" y="240" font-family="Courier" font-size="10" fill="#555">genis-60-sec-train.csv</text>
+  <text x="60" y="260" font-family="Courier" font-size="10" fill="#555">8 CSV files total</text>
+  <text x="60" y="280" font-family="Courier" font-size="10" fill="#555">5.29M rows × 88 cols</text>
+  <text x="60" y="300" font-family="Courier" font-size="10" fill="#555">Labels: Binary, Category,</text>
+  <text x="60" y="315" font-family="Courier" font-size="10" fill="#555">SubCategory</text>
+  <text x="60" y="335" font-family="Courier" font-size="10" fill="#777">Classes: benign, bruteforce,</text>
+  <text x="60" y="350" font-family="Courier" font-size="10" fill="#777">dos, recon</text>
+
+  <!-- Arrow to Preprocessing -->
+  <path d="M 260 240 L 290 240" stroke="#4a90d9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Preprocessing -->
+  <rect x="295" y="130" width="220" height="220" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="405" y="155" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c5f8a">Preprocessing</text>
+  <text x="305" y="175" font-family="Courier" font-size="11" fill="#333">preprocess_genis.py</text>
+  <text x="305" y="195" font-family="Courier" font-size="10" fill="#555">• Remove duplicates</text>
+  <text x="305" y="210" font-family="Courier" font-size="10" fill="#555">• Handle missing values</text>
+  <text x="305" y="225" font-family="Courier" font-size="10" fill="#555">• Remove leakage features</text>
+  <text x="305" y="240" font-family="Courier" font-size="10" fill="#555">• Normalize labels</text>
+  <text x="305" y="255" font-family="Courier" font-size="10" fill="#555">• Median impute numeric</text>
+  <text x="305" y="270" font-family="Courier" font-size="10" fill="#555">• Stratified 70/15/15 split</text>
+  <text x="305" y="290" font-family="Courier" font-size="10" fill="#777">Output: data/cleaned/</text>
+  <text x="305" y="305" font-family="Courier" font-size="10" fill="#777">train.csv (3.66M rows)</text>
+  <text x="305" y="320" font-family="Courier" font-size="10" fill="#777">validation.csv (784K)</text>
+  <text x="305" y="335" font-family="Courier" font-size="10" fill="#777">test.csv (784K)</text>
+
+  <!-- Arrow to Flow-to-Text -->
+  <path d="M 525 240 L 555 240" stroke="#4a90d9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Flow-to-Text Representation -->
+  <rect x="560" y="130" width="230" height="220" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="675" y="155" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c5f8a">Flow-to-Text</text>
+  <text x="570" y="175" font-family="Courier" font-size="11" fill="#333">src/representation/</text>
+  <text x="570" y="195" font-family="Courier" font-size="10" fill="#555">flow_to_text.py</text>
+  <text x="570" y="210" font-family="Courier" font-size="10" fill="#555">• Protocol → TCP/ICMP/...</text>
+  <text x="570" y="225" font-family="Courier" font-size="10" fill="#555">• Flags → e, e_s, ...</text>
+  <text x="570" y="240" font-family="Courier" font-size="10" fill="#555">• States → CON, RST, ...</text>
+  <text x="570" y="255" font-family="Courier" font-size="10" fill="#555">• Numeric metrics</text>
+  <text x="570" y="270" font-family="Courier" font-size="10" fill="#555">• Deterministic template</text>
+  <text x="570" y="290" font-family="Courier" font-size="10" fill="#777">Output: data/processed/flow_text/</text>
+  <text x="570" y="305" font-family="Courier" font-size="10" fill="#777">train_text.jsonl (3.66M)</text>
+  <text x="570" y="320" font-family="Courier" font-size="10" fill="#777">validation_text.jsonl (784K)</text>
+  <text x="570" y="335" font-family="Courier" font-size="10" fill="#777">test_text.jsonl (784K)</text>
+
+  <!-- Arrow to KB Sampling -->
+  <path d="M 800 240 L 830 240" stroke="#4a90d9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Knowledge Base Sampling -->
+  <rect x="835" y="130" width="220" height="220" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="945" y="155" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c5f8a">KB Sampling</text>
+  <text x="845" y="175" font-family="Courier" font-size="11" fill="#333">scripts/build_kb_sample.py</text>
+  <text x="845" y="195" font-family="Courier" font-size="10" fill="#555">Two arms:</text>
+  <text x="845" y="210" font-family="Courier" font-size="10" fill="#555">• Proportional (94% dos)</text>
+  <text x="845" y="225" font-family="Courier" font-size="10" fill="#555">• Balanced (25K/class)</text>
+  <text x="845" y="245" font-family="Courier" font-size="10" fill="#777">100K records each</text>
+  <text x="845" y="260" font-family="Courier" font-size="10" fill="#777">Seed 42, deterministic</text>
+  <text x="845" y="280" font-family="Courier" font-size="10" fill="#777">Output: data/processed/kb/</text>
+  <text x="845" y="295" font-family="Courier" font-size="10" fill="#777">clean_sample_100k.jsonl</text>
+  <text x="845" y="310" font-family="Courier" font-size="10" fill="#777">clean_sample_100k_balanced.jsonl</text>
+
+  <!-- Arrow to Chunking -->
+  <path d="M 1065 240 L 1095 240" stroke="#4a90d9" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Chunking Methods -->
+  <rect x="1100" y="130" width="250" height="220" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="1225" y="155" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2c5f8a">Chunking (3 Methods)</text>
+  <text x="1110" y="175" font-family="Courier" font-size="11" fill="#333">src/chunking/</text>
+  <text x="1110" y="195" font-family="Courier" font-size="10" fill="#555">• semantic.py: 1 flow/chunk</text>
+  <text x="1110" y="210" font-family="Courier" font-size="10" fill="#555">• fixed_size.py: 2048-char</text>
+  <text x="1110" y="225" font-family="Courier" font-size="10" fill="#555">• agentic.py: Ollama-bounded</text>
+  <text x="1110" y="240" font-family="Courier" font-size="10" fill="#555">  (8 flows max, 4096 chars)</text>
+  <text x="1110" y="255" font-family="Courier" font-size="10" fill="#555">  Fail-closed fallback</text>
+  <text x="1110" y="275" font-family="Courier" font-size="10" fill="#777">Agentic: 1K sample → 925 chunks</text>
+  <text x="1110" y="290" font-family="Courier" font-size="10" fill="#777">924 Ollama decisions, 0 fallback</text>
+
+  <!-- Phase II: Building Resilient-RAG (Weeks 3-5) -->
+  <rect x="30" y="390" width="1340" height="310" rx="12" fill="#f0f8e8" stroke="#5a9e56" stroke-width="2"/>
+  <text x="40" y="415" font-family="Arial" font-size="16" font-weight="bold" fill="#2d6b29">Phase II: Building Resilient-RAG (Weeks 3–5)</text>
+
+  <!-- Embedding + FAISS -->
+  <rect x="50" y="430" width="220" height="250" rx="8" fill="#ffffff" stroke="#5a9e56" stroke-width="1.5"/>
+  <text x="160" y="455" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2d6b29">Embedding + Index</text>
+  <text x="60" y="475" font-family="Courier" font-size="11" fill="#333">src/index/</text>
+  <text x="60" y="495" font-family="Courier" font-size="10" fill="#555">• embedder.py</text>
+  <text x="60" y="510" font-family="Courier" font-size="10" fill="#555">  all-MiniLM-L6-v2 (384d)</text>
+  <text x="60" y="525" font-family="Courier" font-size="10" fill="#555">• vector_store.py (FAISS)</text>
+  <text x="60" y="545" font-family="Courier" font-size="10" fill="#777">CUDA GPU: RTX 3050 6GB</text>
+  <text x="60" y="565" font-family="Courier" font-size="10" fill="#777">Index sizes:</text>
+  <text x="60" y="580" font-family="Courier" font-size="10" fill="#777">• semantic: 100K chunks</text>
+  <text x="60" y="595" font-family="Courier" font-size="10" fill="#777">• fixed: 75K chunks</text>
+  <text x="60" y="610" font-family="Courier" font-size="10" fill="#777">• agentic: 925 chunks</text>
+  <text x="60" y="630" font-family="Courier" font-size="10" fill="#777">Output: data/processed/vector_indexes/</text>
+  <text x="60" y="645" font-family="Courier" font-size="10" fill="#777">Clean + 6 poisoned indexes</text>
+
+  <!-- Arrow to Attack Generation -->
+  <path d="M 280 550 L 310 550" stroke="#5a9e56" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Attack Generation -->
+  <rect x="315" y="430" width="220" height="250" rx="8" fill="#ffffff" stroke="#5a9e56" stroke-width="1.5"/>
+  <text x="425" y="455" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2d6b29">Attack Generation</text>
+  <text x="325" y="475" font-family="Courier" font-size="11" fill="#333">src/attacks/</text>
+  <text x="325" y="495" font-family="Courier" font-size="10" fill="#555">• templates.py: 3 goals</text>
+  <text x="325" y="510" font-family="Courier" font-size="10" fill="#555">  (alert suppression,</text>
+  <text x="325" y="525" font-family="Courier" font-size="10" fill="#555">   misclassification,</text>
+  <text x="325" y="540" font-family="Courier" font-size="10" fill="#555">   analyst misdirection)</text>
+  <text x="325" y="555" font-family="Courier" font-size="10" fill="#555">• black_box.py</text>
+  <text x="325" y="570" font-family="Courier" font-size="10" fill="#555">• white_box.py</text>
+  <text x="325" y="590" font-family="Courier" font-size="10" fill="#777">480 attacks total</text>
+  <text x="325" y="605" font-family="Courier" font-size="10" fill="#777">240 black-box + 240 white-box</text>
+  <text x="325" y="620" font-family="Courier" font-size="10" fill="#777">160 per goal, 4 variants each</text>
+  <text x="325" y="640" font-family="Courier" font-size="10" fill="#777">Output: data/processed/attack_catalog/</text>
+  <text x="325" y="655" font-family="Courier" font-size="10" fill="#777">attack_catalog.jsonl</text>
+
+  <!-- Arrow to Pre-Check -->
+  <path d="M 545 550 L 575 550" stroke="#5a9e56" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Pre-Check Filter -->
+  <rect x="580" y="430" width="220" height="250" rx="8" fill="#ffffff" stroke="#5a9e56" stroke-width="1.5"/>
+  <text x="690" y="455" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2d6b29">Pre-Check Filter</text>
+  <text x="590" y="475" font-family="Courier" font-size="11" fill="#333">src/defense/precheck.py</text>
+  <text x="590" y="495" font-family="Courier" font-size="10" fill="#555">Schema validation:</text>
+  <text x="590" y="510" font-family="Courier" font-size="10" fill="#555">• Known protocols (ARP-TCP)</text>
+  <text x="590" y="525" font-family="Courier" font-size="10" fill="#555">• Valid ports (0-65535)</text>
+  <text x="590" y="540" font-family="Courier" font-size="10" fill="#555">• Known flags/states</text>
+  <text x="590" y="555" font-family="Courier" font-size="10" fill="#555">Language detection:</text>
+  <text x="590" y="570" font-family="Courier" font-size="10" fill="#555">• Instruction-pattern regex</text>
+  <text x="590" y="585" font-family="Courier" font-size="10" fill="#555">• Perplexity (optional)</text>
+  <text x="590" y="605" font-family="Courier" font-size="10" fill="#777">Tuning: 0% clean rejection</text>
+  <text x="590" y="620" font-family="Courier" font-size="10" fill="#777">100% attack detection (480)</text>
+  <text x="590" y="640" font-family="Courier" font-size="10" fill="#777">Config: configs/precheck.yaml</text>
+  <text x="590" y="655" font-family="Courier" font-size="10" fill="#777">configs/chunking.yaml</text>
+
+  <!-- Arrow to Post-Check -->
+  <path d="M 810 550 L 840 550" stroke="#5a9e56" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Post-Check Verifier -->
+  <rect x="845" y="430" width="220" height="250" rx="8" fill="#ffffff" stroke="#5a9e56" stroke-width="1.5"/>
+  <text x="955" y="455" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2d6b29">Post-Check Verifier</text>
+  <text x="855" y="475" font-family="Courier" font-size="11" fill="#333">src/defense/postcheck.py</text>
+  <text x="855" y="495" font-family="Courier" font-size="10" fill="#555">Cross-encoder re-ranking:</text>
+  <text x="855" y="510" font-family="Courier" font-size="10" fill="#555">• ms-marco-MiniLM-L-6-v2</text>
+  <text x="855" y="525" font-family="Courier" font-size="10" fill="#555">• Threshold: -5.06 (5th pctile)</text>
+  <text x="855" y="540" font-family="Courier" font-size="10" fill="#555">Refuse-to-answer rule:</text>
+  <text x="855" y="555" font-family="Courier" font-size="10" fill="#555">• Score below threshold</text>
+  <text x="855" y="570" font-family="Courier" font-size="10" fill="#555">• Precheck-flagged chunks</text>
+  <text x="855" y="585" font-family="Courier" font-size="10" fill="#555">• No evidence retrieved</text>
+  <text x="855" y="605" font-family="Courier" font-size="10" fill="#777">Tuned on 100 validation queries</text>
+  <text x="855" y="620" font-family="Courier" font-size="10" fill="#777">Thresholds per KB arm</text>
+  <text x="855" y="640" font-family="Courier" font-size="10" fill="#777">Config: configs/postcheck.yaml</text>
+  <text x="855" y="655" font-family="Courier" font-size="10" fill="#777">configs/postcheck_balanced.yaml</text>
+
+  <!-- Arrow to Poisoning -->
+  <path d="M 1075 550 L 1105 550" stroke="#5a9e56" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Poisoned KB Copies -->
+  <rect x="1110" y="430" width="240" height="250" rx="8" fill="#ffffff" stroke="#5a9e56" stroke-width="1.5"/>
+  <text x="1230" y="455" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#2d6b29">Poisoned KB Copies</text>
+  <text x="1120" y="475" font-family="Courier" font-size="11" fill="#333">scripts/poison_kb.py</text>
+  <text x="1120" y="495" font-family="Courier" font-size="10" fill="#555">• 3 poison rates: 0.1%, 0.5%, 1%</text>
+  <text x="1120" y="510" font-family="Courier" font-size="10" fill="#555">• Seeded: 42, 43, 44</text>
+  <text x="1120" y="525" font-family="Courier" font-size="10" fill="#555">• Mixed attack types</text>
+  <text x="1120" y="540" font-family="Courier" font-size="10" fill="#555">• Preserves clean copy</text>
+  <text x="1120" y="560" font-family="Courier" font-size="10" fill="#777">Proportional arm:</text>
+  <text x="1120" y="575" font-family="Courier" font-size="10" fill="#777">  100/500/1000 poisoned</text>
+  <text x="1120" y="590" font-family="Courier" font-size="10" fill="#777">Balanced arm:</text>
+  <text x="1120" y="605" font-family="Courier" font-size="10" fill="#777">  100/500/1000 poisoned</text>
+  <text x="1120" y="625" font-family="Courier" font-size="10" fill="#777">Output: data/processed/kb/</text>
+  <text x="1120" y="640" font-family="Courier" font-size="10" fill="#777">poisoned_*.jsonl (6 files)</text>
+  <text x="1120" y="655" font-family="Courier" font-size="10" fill="#777">+ FAISS indexes for each</text>
+
+  <!-- Phase III: Testing (Weeks 6-7) -->
+  <rect x="30" y="720" width="1340" height="210" rx="12" fill="#fff5e6" stroke="#d48c28" stroke-width="2"/>
+  <text x="40" y="745" font-family="Arial" font-size="16" font-weight="bold" fill="#8a5c18">Phase III: Testing (Weeks 6–7)</text>
+
+  <!-- Query Pipeline -->
+  <rect x="50" y="760" width="280" height="150" rx="8" fill="#ffffff" stroke="#d48c28" stroke-width="1.5"/>
+  <text x="190" y="785" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#8a5c18">Query Pipeline (Baseline + Resilient)</text>
+  <text x="60" y="805" font-family="Courier" font-size="11" fill="#333">src/pipeline/</text>
+  <text x="60" y="820" font-family="Courier" font-size="10" fill="#555">• prompts.py: JSON schema output</text>
+  <text x="60" y="835" font-family="Courier" font-size="10" fill="#555">  {"category","alert_required","justification"}</text>
+  <text x="60" y="850" font-family="Courier" font-size="10" fill="#555">• query_engine.py: shared engine</text>
+  <text x="60" y="865" font-family="Courier" font-size="10" fill="#555">• baseline.py: defense-disabled facade</text>
+  <text x="60" y="885" font-family="Courier" font-size="10" fill="#777">Ollama: qwen2.5:7b (local, temperature 0)</text>
+  <text x="60" y="900" font-family="Courier" font-size="10" fill="#777">Structured JSON: 4 allowed categories</text>
+
+  <!-- Arrow to Evaluation -->
+  <path d="M 340 835 L 370 835" stroke="#d48c28" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Evaluation Engine -->
+  <rect x="375" y="760" width="250" height="150" rx="8" fill="#ffffff" stroke="#d48c28" stroke-width="1.5"/>
+  <text x="500" y="785" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#8a5c18">Evaluation Engine</text>
+  <text x="385" y="805" font-family="Courier" font-size="11" fill="#333">src/evaluation/</text>
+  <text x="385" y="820" font-family="Courier" font-size="10" fill="#555">• metrics.py: accuracy, P/R/F1</text>
+  <text x="385" y="835" font-family="Courier" font-size="10" fill="#555">  false-refusal, latency</text>
+  <text x="385" y="850" font-family="Courier" font-size="10" fill="#555">• judge.py: rule-first + LLM-fallback</text>
+  <text x="385" y="865" font-family="Courier" font-size="10" fill="#555">  ASR by goal and type</text>
+  <text x="385" y="885" font-family="Courier" font-size="10" fill="#777">Query sets: 100 clean (validation)</text>
+  <text x="385" y="900" font-family="Courier" font-size="10" fill="#777">100 clean (held-out test)</text>
+  <text x="385" y="915" font-family="Courier" font-size="10" fill="#777">30 attacks × 3 rates = 90 attack queries</text>
+
+  <!-- Arrow to Experiment Matrix -->
+  <path d="M 635 835 L 665 835" stroke="#d48c28" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Experiment Matrix -->
+  <rect x="670" y="760" width="300" height="150" rx="8" fill="#ffffff" stroke="#d48c28" stroke-width="1.5"/>
+  <text x="820" y="785" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#8a5c18">Experiment Matrix (360 Runs)</text>
+  <text x="680" y="805" font-family="Courier" font-size="11" fill="#333">scripts/run_experiments.py</text>
+  <text x="680" y="820" font-family="Courier" font-size="10" fill="#555">2 KB arms × 2 systems × 3 rates × 30 attacks</text>
+  <text x="680" y="835" font-family="Courier" font-size="10" fill="#555">+ 200 clean queries</text>
+  <text x="680" y="850" font-family="Courier" font-size="10" fill="#555">HF_HUB_OFFLINE=1 for offline mode</text>
+  <text x="680" y="870" font-family="Courier" font-size="10" fill="#777">Results: 26 JSONL files in experiments/</text>
+  <text x="680" y="885" font-family="Courier" font-size="10" fill="#777">Per-row: query, answer, refused,</text>
+  <text x="680" y="900" font-family="Courier" font-size="10" fill="#777">retrieved_ids, timings_ms, ASR</text>
+
+  <!-- Arrow to Statistical Analysis -->
+  <path d="M 980 835 L 1010 835" stroke="#d48c28" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Statistical Analysis -->
+  <rect x="1015" y="760" width="320" height="150" rx="8" fill="#ffffff" stroke="#d48c28" stroke-width="1.5"/>
+  <text x="1175" y="785" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#8a5c18">Statistical Analysis &amp; Figures</text>
+  <text x="1025" y="805" font-family="Courier" font-size="11" fill="#333">scripts/:</text>
+  <text x="1025" y="820" font-family="Courier" font-size="10" fill="#555">• analyze_results.py: aggregation</text>
+  <text x="1025" y="835" font-family="Courier" font-size="10" fill="#555">• statistical_analysis.py: Wilcoxon + t-test</text>
+  <text x="1025" y="850" font-family="Courier" font-size="10" fill="#555">• generate_figures.py: dependency-free SVG</text>
+  <text x="1025" y="870" font-family="Courier" font-size="10" fill="#777">Figures: 5 SVG files in docs/figures/</text>
+  <text x="1025" y="885" font-family="Courier" font-size="10" fill="#777">clean_accuracy_f1.svg, clean_latency.svg</text>
+  <text x="1025" y="900" font-family="Courier" font-size="10" fill="#777">clean_false_refusal.svg, attack_asr.svg</text>
+
+  <!-- Phase IV: Results and Report (Week 8) -->
+  <rect x="30" y="950" width="1340" height="230" rx="12" fill="#f5e8f5" stroke="#9b59b6" stroke-width="2"/>
+  <text x="40" y="975" font-family="Arial" font-size="16" font-weight="bold" fill="#6c3483">Phase IV: Results and Report (Week 8)</text>
+
+  <!-- Documentation -->
+  <rect x="50" y="990" width="300" height="170" rx="8" fill="#ffffff" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="200" y="1015" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#6c3483">Documentation &amp; Reports</text>
+  <text x="60" y="1035" font-family="Courier" font-size="11" fill="#333">docs/</text>
+  <text x="60" y="1050" font-family="Courier" font-size="10" fill="#555">• evaluation_report.md: full results</text>
+  <text x="60" y="1065" font-family="Courier" font-size="10" fill="#555">• proposal_traceability.md: 12-step checklist</text>
+  <text x="60" y="1080" font-family="Courier" font-size="10" fill="#555">• thesis_outline.md: 10-section structure</text>
+  <text x="60" y="1095" font-family="Courier" font-size="10" fill="#555">• attack_model.md: threat model + references</text>
+  <text x="60" y="1110" font-family="Courier" font-size="10" fill="#555">• developer_guide.md: end-to-end guide</text>
+  <text x="60" y="1125" font-family="Courier" font-size="10" fill="#555">• architecture_diagram.svg</text>
+  <text x="60" y="1140" font-family="Courier" font-size="10" fill="#555">• chunking.md, flow_text_*.md</text>
+
+  <!-- Arrow to Deliverables -->
+  <path d="M 360 1075 L 390 1075" stroke="#9b59b6" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Deliverables -->
+  <rect x="395" y="990" width="300" height="170" rx="8" fill="#ffffff" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="545" y="1015" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#6c3483">Deliverables</text>
+  <text x="405" y="1035" font-family="Courier" font-size="10" fill="#555">✓ Attack benchmark (480 attacks)</text>
+  <text x="405" y="1050" font-family="Courier" font-size="10" fill="#555">✓ Defense system (pre + post check)</text>
+  <text x="405" y="1065" font-family="Courier" font-size="10" fill="#555">✓ Open-source code (39 tests passing)</text>
+  <text x="405" y="1080" font-family="Courier" font-size="10" fill="#555">✓ Evaluation results (360 attack runs)</text>
+  <text x="405" y="1095" font-family="Courier" font-size="10" fill="#555">✓ Thesis outline and evaluation report</text>
+  <text x="405" y="1110" font-family="Courier" font-size="10" fill="#555">✓ Architecture diagram and figures</text>
+  <text x="405" y="1130" font-family="Courier" font-size="10" fill="#777">Limitations stated: GeNIS substitution,</text>
+  <text x="405" y="1145" font-family="Courier" font-size="10" fill="#777">single-seed, no external dataset,</text>
+  <text x="405" y="1160" font-family="Courier" font-size="10" fill="#777">agentic 1K sample, ASR retrieval metric</text>
+
+  <!-- Key Results -->
+  <rect x="720" y="990" width="650" height="170" rx="8" fill="#ffffff" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="1045" y="1015" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold" fill="#6c3483">Key Results (Verified)</text>
+  <text x="730" y="1035" font-family="Courier" font-size="10" fill="#555">Clean Accuracy: Proportional baseline 74%, Resilient 68%, Balanced baseline 73%, Resilient 67%</text>
+  <text x="730" y="1050" font-family="Courier" font-size="10" fill="#555">False Refusal: Proportional resilient 1%, Balanced resilient 4%</text>
+  <text x="730" y="1065" font-family="Courier" font-size="10" fill="#555">Latency Overhead: Proportional +1.2s/query, Balanced +7.4s/query (both p &lt; 0.001)</text>
+  <text x="730" y="1080" font-family="Courier" font-size="10" fill="#555">Attack ASR: 0% all conditions (baseline no success detected, resilient refused all attacks)</text>
+  <text x="730" y="1095" font-family="Courier" font-size="10" fill="#555">Bruteforce: 16–20% accuracy (retrieval blind spot, not code defect)</text>
+  <text x="730" y="1110" font-family="Courier" font-size="10" fill="#555">Recon: 100% accuracy across all conditions</text>
+  <text x="730" y="1125" font-family="Courier" font-size="10" fill="#555">Benign: 88% → 100% with balanced KB (retrieval prior effect)</text>
+  <text x="730" y="1140" font-family="Courier" font-size="10" fill="#777">Accuracy difference: not significant (Wilcoxon p &gt; 0.05)</text>
+  <text x="730" y="1155" font-family="Courier" font-size="10" fill="#777">Latency increase: highly significant (p &lt; 0.001)</text>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a90d9"/>
+    </marker>
+  </defs>
+</svg>

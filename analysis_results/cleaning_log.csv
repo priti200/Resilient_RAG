@@ -1,0 +1,15 @@
+Issue,Column,Action,Rows affected,Reason
+High missingness,DstJitAct,Remove column,4918285,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
+High missingness,DstJitter,Remove column,4310352,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
+High missingness,SrcJitAct,Remove column,4310352,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
+Potential leakage,Ssaddr,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
+Potential leakage,Sdaddr,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
+Potential leakage,RunTime,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
+Potential leakage,Dur,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
+Potential leakage,Offset,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
+Target leakage,BinaryLabel,Remove feature,5286841,This field directly encodes the attack label or a more detailed target label and should not be used as input.
+Target leakage,SubCategoryLabel,Remove feature,5286841,This field directly encodes the attack label or a more detailed target label and should not be used as input.
+Invalid numeric value,PCRatio,Set to NaN then median impute,213314,Negative PCRatio is physically invalid and cannot be safely retained as-is.
+Missing numeric value,PCRatio,Median imputation,213314,Numeric feature has a justified proportion of missing values and median imputation preserves scale without distorting the distribution too strongly.
+Missing categorical value,State_RSP,Mode/Unknown imputation,368556,Categorical field missing values are filled with the most common category or an explicit Unknown label.
+Duplicate records,all columns,Remove exact duplicates,57535,Exact duplicate rows were identified in the previous analysis and are redundant for supervised learning.

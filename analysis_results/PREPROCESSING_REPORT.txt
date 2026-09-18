@@ -1,0 +1,20 @@
+PREPROCESSING REPORT
+====================
+Original dataset size: 5286841 rows x 88 columns
+Final cleaned dataset size: 5229306 rows x 78 columns
+Rows removed: 57535
+Missing values handled: 13907545
+Duplicates removed: 57535
+Invalid values handled: 0
+Features removed: 10
+Leakage features removed: Ssaddr, Sdaddr, RunTime, Dur, Offset, BinaryLabel, SubCategoryLabel, and three high-missing jitter columns.
+Label transformations: All target labels were normalized to lowercase and stripped of whitespace; no class-merging was performed.
+Class distribution before cleaning: {'benign': 144124, 'bruteforce': 83830, 'dos': 4947955, 'recon': 110932}
+Class distribution after cleaning: {'benign': 140526, 'bruteforce': 78047, 'dos': 4925862, 'recon': 84871}
+Train/validation/test sizes: 3660514 / 784396 / 784396
+Train distribution: {'benign': 98368, 'bruteforce': 54633, 'dos': 3448103, 'recon': 59410}
+Validation distribution: {'benign': 21079, 'bruteforce': 11707, 'dos': 738880, 'recon': 12730}
+Test distribution: {'benign': 21079, 'bruteforce': 11707, 'dos': 738879, 'recon': 12731}
+Outlier decisions: negative PCRatio was treated as invalid and imputed after a documented review; zero values were retained because they are common in this telemetry dataset and not necessarily data-quality errors.
+Scaling decisions: no scaling was applied during cleaning; this preserves raw feature semantics. Scaling, if needed later, should be fit only on the training split.
+Remaining data-quality issues: none found in the cleaned, model-ready dataset aside from the expected class imbalance.

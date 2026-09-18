@@ -1,0 +1,14 @@
+semantic:
+  enabled: true
+
+fixed:
+  enabled: true
+  max_chars: 2048
+
+agentic:
+  enabled: true
+  model: qwen2.5:7b
+  max_records: 8
+  max_chars: 4096
+  temperature: 0.0
+  fallback: "start_new_chunk"

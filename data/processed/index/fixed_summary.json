@@ -1,0 +1,10 @@
+{
+  "input": "data\\processed\\kb\\clean_sample_100k.jsonl",
+  "index": "data\\processed\\index\\fixed.faiss",
+  "metadata": "data\\processed\\index\\fixed_metadata.jsonl",
+  "method": "fixed",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "chunks": 75002,
+  "dimension": 384,
+  "device": "cuda"
+}

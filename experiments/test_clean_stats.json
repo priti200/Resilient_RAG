@@ -1,0 +1,12 @@
+{
+  "paired_queries": 100,
+  "baseline_accuracy": 0.74,
+  "resilient_accuracy": 0.68,
+  "accuracy_difference": -0.05999999999999994,
+  "accuracy_wilcoxon_p": 0.2594628026925818,
+  "accuracy_ttest_p": 0.013556758919315065,
+  "baseline_mean_latency_ms": 7292.78583399835,
+  "resilient_mean_latency_ms": 8496.81907499762,
+  "latency_wilcoxon_p": 3.7734621019025376e-12,
+  "latency_ttest_p": 4.280007126964302e-12
+}

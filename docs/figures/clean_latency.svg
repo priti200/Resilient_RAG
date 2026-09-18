@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600"><rect width="100%" height="100%" fill="white"/><text x="500" y="35" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold">Clean-query latency (seconds)</text>
+<line x1="90" y1="500.0" x2="970" y2="500.0" stroke="#dddddd"/>
+<text x="78" y="505.0" text-anchor="end" font-family="Arial" font-size="12">0.00</text>
+<line x1="90" y1="414.0" x2="970" y2="414.0" stroke="#dddddd"/>
+<text x="78" y="419.0" text-anchor="end" font-family="Arial" font-size="12">3.52</text>
+<line x1="90" y1="328.0" x2="970" y2="328.0" stroke="#dddddd"/>
+<text x="78" y="333.0" text-anchor="end" font-family="Arial" font-size="12">7.04</text>
+<line x1="90" y1="242.0" x2="970" y2="242.0" stroke="#dddddd"/>
+<text x="78" y="247.0" text-anchor="end" font-family="Arial" font-size="12">10.56</text>
+<line x1="90" y1="156.0" x2="970" y2="156.0" stroke="#dddddd"/>
+<text x="78" y="161.0" text-anchor="end" font-family="Arial" font-size="12">14.07</text>
+<line x1="90" y1="70.0" x2="970" y2="70.0" stroke="#dddddd"/>
+<text x="78" y="75.0" text-anchor="end" font-family="Arial" font-size="12">17.59</text>
+<rect x="145.0" y="321.8" width="93.5" height="178.2" fill="#4777a8"/>
+<text x="191.2" y="316.8" text-anchor="middle" font-family="Arial" font-size="11">7.29</text>
+<rect x="365.0" y="292.3" width="93.5" height="207.7" fill="#4777a8"/>
+<text x="411.2" y="287.3" text-anchor="middle" font-family="Arial" font-size="11">8.50</text>
+<rect x="585.0" y="322.7" width="93.5" height="177.3" fill="#4777a8"/>
+<text x="631.2" y="317.7" text-anchor="middle" font-family="Arial" font-size="11">7.26</text>
+<rect x="805.0" y="141.7" width="93.5" height="358.3" fill="#4777a8"/>
+<text x="851.2" y="136.7" text-anchor="middle" font-family="Arial" font-size="11">14.66</text>
+<text x="200.0" y="545" text-anchor="middle" font-family="Arial" font-size="13">Proportional&#10;baseline</text>
+<text x="420.0" y="545" text-anchor="middle" font-family="Arial" font-size="13">Proportional&#10;resilient</text>
+<text x="640.0" y="545" text-anchor="middle" font-family="Arial" font-size="13">Balanced&#10;baseline</text>
+<text x="860.0" y="545" text-anchor="middle" font-family="Arial" font-size="13">Balanced&#10;resilient</text>
+<rect x="790" y="53" width="12" height="12" fill="#4777a8"/>
+<text x="808" y="63" font-family="Arial" font-size="12">Mean latency</text>
+</svg>

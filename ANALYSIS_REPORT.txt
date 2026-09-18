@@ -1,0 +1,56 @@
+DATASET OVERVIEW
+----------------
+Total records: 5,286,841
+Total features: 88
+Target column: CategoryLabel
+Number of classes: 4
+
+MISSING VALUES
+--------------
+Columns with missing values: 4
+Total missing cells: 13907545
+Rows affected: 5286841
+Highest missing feature: DstJitAct (93.03%)
+
+DUPLICATES
+----------
+Duplicate rows: 2,360
+Duplicate percentage: 0.0446%
+
+CLASS IMBALANCE
+---------------
+Majority class: dos
+Minority class: bruteforce
+Number of classes: 4
+Majority percentage: 93.5900%
+Minority percentage: 1.5856%
+Imbalance ratio: 59.02
+
+BINARY DISTRIBUTION
+-------------------
+Normal: 144124
+Attack: 5142717
+Attack percentage: 97.2739%
+
+DATA QUALITY
+------------
+Invalid values: 0
+Infinite values: 0
+Constant columns: 0
+Potential leakage columns: 6
+
+RECOMMENDATION
+--------------
+Is the dataset suitable for the project? Yes, the GeNIS dataset is suitable for intrusion-detection research, but it requires explicit data-quality handling before model training.
+What cleaning is required? Keep the label rows, do not delete them automatically. The missingness is concentrated in a few telemetry fields and not in the target labels. Review feature-level imputation only after deciding whether such features belong in the final model.
+What imbalance strategy is recommended? Preserve the natural traffic distribution for a baseline experiment and use stratified 70/15/15 sampling, with class weighting or focal loss if needed. Do not apply SMOTE or aggressive undersampling automatically.
+What split strategy is recommended? Use 70% train, 15% validation, 15% test with stratification on CategoryLabel and random_state=42. Apply any rebalancing only to the training set, never before splitting.
+
+IMPORTANT FINDINGS
+-------------------
+- The workspace contains eight GeNIS CSV splits, representing 5s, 10s, 30s, and 60s window train/test partitions.
+- The label columns are BinaryLabel, CategoryLabel, and SubCategoryLabel. CategoryLabel is the multiclass target for attack categories.
+- Missingness is concentrated in DstJitAct, DstJitter, SrcJitAct, and State_RSP; the target labels themselves are not missing in the combined data.
+- The dataset is highly imbalanced: DoS dominates the attack classes, while benign and rare attacks are sparse.
+- Duplicate rows exist but are rare (~0.045%), so they should be checked rather than blindly removed.
+- Potential leakage candidates include direct label fields, source/destination identifiers, and time-related metadata; exclude them from feature engineering unless intentionally studying them.

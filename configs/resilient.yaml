@@ -1,0 +1,5 @@
+model: qwen2.5:7b
+embedding_model: sentence-transformers/all-MiniLM-L6-v2
+top_k: 5
+# Tuned at the 5th percentile of clean validation cross-encoder scores.
+postcheck_threshold: -5.062863230705261

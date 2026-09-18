@@ -1,0 +1,18 @@
+# Existing data-processing dependencies
+numpy==2.5.3
+pandas
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib
+
+# Model and retrieval stack
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0+cu124
+sentence-transformers==6.0.1
+transformers==5.17.0
+faiss-cpu==1.15.0
+
+# Configuration, local generation client, and testing
+ollama==0.6.2
+PyYAML==6.0.3
+pytest==9.1.1

@@ -1,0 +1,6 @@
+max_language_score: 0.0
+max_perplexity: null
+clean_rejection_rate: 0.0
+attack_detection_rate: 1.0
+clean_samples: 1000
+attack_samples: 480

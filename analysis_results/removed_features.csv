@@ -1,0 +1,11 @@
+Feature,Reason for Removal
+DstJitAct,Very high missingness and not essential for the final feature set.
+DstJitter,Very high missingness and not essential for the final feature set.
+SrcJitAct,Very high missingness and not essential for the final feature set.
+Ssaddr,Potential leakage or temporal context not available during real-time detection.
+Sdaddr,Potential leakage or temporal context not available during real-time detection.
+RunTime,Potential leakage or temporal context not available during real-time detection.
+Dur,Potential leakage or temporal context not available during real-time detection.
+Offset,Potential leakage or temporal context not available during real-time detection.
+BinaryLabel,Direct target information; not allowed as a feature input.
+SubCategoryLabel,Direct target information; not allowed as a feature input.
