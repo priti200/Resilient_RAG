@@ -1,5 +1,5 @@
-Number of Samples,count
-dos,742194
-benign,21618
-recon,16640
-bruteforce,12575
+CategoryLabel,Count,Percentage
+dos,988883,93.66178506954903
+benign,28683,2.7167025635488473
+recon,21667,2.0521840269292917
+bruteforce,16569,1.5693283399728357
