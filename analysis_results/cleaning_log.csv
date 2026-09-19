@@ -1,15 +1,20 @@
-Issue,Column,Action,Rows affected,Reason
-High missingness,DstJitAct,Remove column,4918285,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
-High missingness,DstJitter,Remove column,4310352,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
-High missingness,SrcJitAct,Remove column,4310352,Feature has very high missingness and was shown to be non-essential for the clean model-ready dataset.
-Potential leakage,Ssaddr,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
-Potential leakage,Sdaddr,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
-Potential leakage,RunTime,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
-Potential leakage,Dur,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
-Potential leakage,Offset,Remove feature,5286841,Feature may encode identifying or temporal information unavailable during real-world detection.
-Target leakage,BinaryLabel,Remove feature,5286841,This field directly encodes the attack label or a more detailed target label and should not be used as input.
-Target leakage,SubCategoryLabel,Remove feature,5286841,This field directly encodes the attack label or a more detailed target label and should not be used as input.
-Invalid numeric value,PCRatio,Set to NaN then median impute,213314,Negative PCRatio is physically invalid and cannot be safely retained as-is.
-Missing numeric value,PCRatio,Median imputation,213314,Numeric feature has a justified proportion of missing values and median imputation preserves scale without distorting the distribution too strongly.
-Missing categorical value,State_RSP,Mode/Unknown imputation,368556,Categorical field missing values are filled with the most common category or an explicit Unknown label.
-Duplicate records,all columns,Remove exact duplicates,57535,Exact duplicate rows were identified in the previous analysis and are redundant for supervised learning.
+Step,Description,Rows,Columns
+original,Original GeNIS training data,4229471,88
+train:standardize_columns,Standardized column names,4229471,88
+train:missing_target,Removed 0 rows with missing target,4229471,88
+train:high_missing_columns,"Removed predefined high-missing columns: DstJitAct, DstJitter, SrcJitAct",4229471,85
+train:leakage_features,"Removed potential leakage features: Ssaddr, Sdaddr, RunTime, Dur, Offset",4229471,80
+train:target_related_features,"Removed target-related columns: BinaryLabel, SubCategoryLabel",4229471,78
+train:invalid_pcratio,Converted 170748 negative PCRatio values to missing,4229471,78
+train:duplicates,Removed 25912 duplicate rows,4203559,78
+train:imputation,Applied train-fitted imputation; remaining missing values: 0,3573025,78
+validation:imputation,Applied train-fitted imputation; remaining missing values: 0,630534,78
+original,Original GeNIS test data,1057370,88
+test:standardize_columns,Standardized column names,1057370,88
+test:missing_target,Removed 0 rows with missing target,1057370,88
+test:high_missing_columns,"Removed predefined high-missing columns: DstJitAct, DstJitter, SrcJitAct",1057370,85
+test:leakage_features,"Removed potential leakage features: Ssaddr, Sdaddr, RunTime, Dur, Offset",1057370,80
+test:target_related_features,"Removed target-related columns: BinaryLabel, SubCategoryLabel",1057370,78
+test:invalid_pcratio,Converted 42566 negative PCRatio values to missing,1057370,78
+test:duplicates,Removed 1568 duplicate rows,1055802,78
+test:imputation,Applied train-fitted imputation; remaining missing values: 0,1055802,78

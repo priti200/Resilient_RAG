@@ -1,9 +1,4 @@
-File,Rows,Columns,Target Column,Unique Target Values
-genis-10-sec-test.csv,300837,85,CategoryLabel,4
-genis-10-sec-train.csv,1203347,85,CategoryLabel,4
-genis-30-sec-test.csv,121587,87,CategoryLabel,4
-genis-30-sec-train.csv,486346,87,CategoryLabel,4
-genis-5-sec-test.csv,561234,85,CategoryLabel,4
-genis-5-sec-train.csv,2244934,85,CategoryLabel,4
-genis-60-sec-test.csv,73712,87,CategoryLabel,4
-genis-60-sec-train.csv,294844,87,CategoryLabel,4
+Split,Rows,Columns,MissingValues,Duplicates
+train,3573025,78,0,8718
+validation,630534,78,0,261
+test,1055802,78,0,1058
